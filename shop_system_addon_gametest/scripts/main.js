@@ -26,3 +26,8 @@ function shopHome(player, target) {
         }
     });
 }
+
+var scriptOptions = {
+    nameSpaces: "test"
+}
+mc.world.events.scriptEventCommandMessage.subscribe(shopHome);
