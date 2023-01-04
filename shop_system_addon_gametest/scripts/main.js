@@ -18,11 +18,11 @@ function shopHome(player, target) {
     }
     form.show(player).then((response) => {
         if (response.selection < tags.length) {
-            addCart(player);
+            addCart(player,target);
         } else if (response.selection === (tags.length + 1)) {
-            checkCart(player);
+            checkCart(player,target);
         } else if (response.selection === (tags.length + 3)) {
-            openCast(player);
+            openCast(player,target);
         }
     });
 }
