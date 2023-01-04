@@ -1,0 +1,30 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "HDSによるショップ用のアドオンです。",
+        "name": "ショップ用アドオン",
+        "uuid": "c21b833c-b445-47d6-b1f0-19fcb6b99c23",
+        "version": [
+            0,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            18,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "description": "HDSによるショップ用のアドオンです。",
+            "type": "resources",
+            "uuid": "982285f1-f2a5-4c6e-be88-6a637aa940c1",
+            "version": [
+                0,
+                0,
+                0
+            ]
+        }
+    ]
+}
