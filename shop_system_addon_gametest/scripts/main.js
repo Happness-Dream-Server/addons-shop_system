@@ -1,6 +1,10 @@
 //初期設定のメモ
 //dynamic propertyに金額と品物を記入して保存しておく
-//形式はjson形式で、typeに販売タイプ(foods or goods)、listに販売品データ(name,id,priceの3つの要素)
+//形式はjson形式
+/*{
+    type:販売タイプ(foods or goods)将来的に使用できるように予約,
+    list:販売品データ(name,id,priceの3つの要素)
+}*/
 
 //UIと基本のモジュールをimportする
 import * as mc from "@minecraft/server";
@@ -53,14 +57,14 @@ function addCart(player, target, data) {
 }
 
 //カートを表示して、購入するかまだ探すかを選べる
-function checkCart(player,target) {
+function checkCart(player, target) {
     //カートを表示、選択によって購入を確定するか、商品選択に戻す
     //（選択したものを消す手段を作るかどうか迷い中）
     //購入時、現金かキャッシュレスかを選べるとなおよし
 }
 
 //商品の陳列内容を設定
-function openCast(player,target) {
+function openCast(player, target) {
     //商品のリストを表示し、場合によっては削除したり、追加したりできるようにする
     //（shopHomeと半分程同じ動作を行う予定のため、一部を別途関数にすることも検討）
 }
