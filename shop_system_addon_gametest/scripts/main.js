@@ -108,7 +108,7 @@ function addGoods(player, target) {
 
 function dbGet(target) {
     try {
-        var data = target.getTags();
+        var data = target.getTags()[0];
     } catch (error) {
         var data = null;
     }
