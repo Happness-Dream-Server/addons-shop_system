@@ -67,10 +67,56 @@ function checkCart(player, target) {
     //購入時、現金かキャッシュレスかを選べるとなおよし
 }
 
-//商品の陳列内容を設定
+//商品の陳列設定
 function openCast(player, target) {
     //商品のリストを表示し、場合によっては削除したり、追加したりできるようにする
     //（shopHomeと半分程同じ動作を行う予定のため、一部を別途関数にすることも検討）
+    var form = new mcui.ActionFormData()
+        .title("販売設定")
+        .body("操作を選択してください")
+        .button("品物を追加する")
+        .button("閉じる");
+    form.show(player).then((response) => {
+        if (response.selection === 1) {
+            addGoods(player, target);
+        }
+    });
+}
+
+//商品追加
+function addGoods(player, target) {
+    var form = new mcui.ModalFormData()
+        .title("追加内容")
+        .textField("商品名","名前です")
+        .textField("アイテムID","hds:?")
+        .textField("金額",0);
+    if (player.hasTag('cast')) {
+        form.button("§eキャスト用の画面を開く");
+    }
+    form.show(player).then((response) => {
+        var data = dbGet(target);
+        if (data == null) {
+            data = {
+                type: "food",
+                list: []
+            }
+        }
+        data.list.push([response.formValues[0],response.formValues[1],response.formValues[2]]);
+        openCast(player, target);
+    });
+}
+
+function dbGet(target) {
+    try {
+        var data = target.getDynamicProperty("goods");
+    } catch (error) {
+        var data = null;
+    }
+    if (data == null) {
+    } else {
+        data = JSON.parse(target.getDynamicProperty("goods"));
+    }
+    return data;
 }
 
 function eventGet(event) {
