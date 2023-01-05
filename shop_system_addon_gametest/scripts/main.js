@@ -77,8 +77,7 @@ function eventGet(event) {
     shopHome(event.entity, event.hitEntity);
 }
 
-//コマンドとして追加する用だが、実装できるかわからないため、とりあえず放置
-var scriptOptions = {
-    nameSpaces: "test"
+var options = {
+    entityTypes: "hds:shop_object"
 }
-mc.world.events.entityHit.subscribe(eventGet);
+mc.world.events.entityHit.subscribe(eventGet,options);
