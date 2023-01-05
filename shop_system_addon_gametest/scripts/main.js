@@ -31,7 +31,7 @@ function shopHome(player, target) {
             .title("購入できる品物")
             .body("購入したい品物を選んでください");
         for (var i = 0; i < data.list.length; i++) {
-            form.button(data.list[i].name + "：" + data.list[i].price + "オルク");
+            form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
         }
         form.button("カートを見る");
         form.button("閉じる");
