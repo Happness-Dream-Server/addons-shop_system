@@ -41,9 +41,9 @@ function shopHome(player, target) {
         form.show(player).then((response) => {
             if (response.selection < data.list.length) {
                 addCart(player, target, data.list[response.selection]);
-            } else if (response.selection === (tags.length + 1)) {
+            } else if (response.selection === (data.list.length + 1)) {
                 checkCart(player, target);
-            } else if (response.selection === (tags.length + 3)) {
+            } else if (response.selection === (data.list.length + 3)) {
                 openCast(player, target);
             }
         });
