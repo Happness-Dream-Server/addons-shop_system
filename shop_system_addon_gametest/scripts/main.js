@@ -99,6 +99,7 @@ function addGoods(player, target) {
             }
         }
         data.list.push([response.formValues[0],response.formValues[1],response.formValues[2]]);
+        target.setDynamicProperty(JSON.stringify(data));
         openCast(player, target);
     });
 }
