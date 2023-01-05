@@ -98,7 +98,9 @@ function addGoods(player, target) {
                 list: []
             }
         }
-        data.list.push([response.formValues[0], response.formValues[1], response.formValues[2]]);
+        var list = data.list;
+        list.push([response.formValues[0], response.formValues[1], response.formValues[2]]);
+        data.list = list;
         target.setDynamicProperty("goods", JSON.stringify(data));
         openCast(player, target);
     });
