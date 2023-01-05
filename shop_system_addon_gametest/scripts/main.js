@@ -1,5 +1,5 @@
 //初期設定のメモ
-//dynamic propertyに金額と品物を記入して保存しておく
+//tagに金額と品物を記入して保存しておく
 //形式はjson形式
 /*{
     type:販売タイプ(foods or goods)将来的に使用できるように予約,
@@ -100,20 +100,21 @@ function addGoods(player, target) {
         }
         var list = [response.formValues[0], response.formValues[1], response.formValues[2]];
         data.list.push(list);
-        target.setDynamicProperty("goods", JSON.stringify(data));
+        data = JSON.stringify(data);
+        target.addTag(data);
         openCast(player, target);
     });
 }
 
 function dbGet(target) {
     try {
-        var data = target.getDynamicProperty("goods");
+        var data = target.getTags();
     } catch (error) {
         var data = null;
     }
     if (data == null) {
     } else {
-        data = JSON.parse(target.getDynamicProperty("goods"));
+        data = JSON.parse(data);
     }
     return data;
 }
