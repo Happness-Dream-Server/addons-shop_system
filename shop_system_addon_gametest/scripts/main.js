@@ -89,7 +89,7 @@ function addGoods(player, target) {
         .title("追加内容")
         .textField("商品名","名前です")
         .textField("アイテムID","hds:?")
-        .textField("金額",0);
+        .textField("金額","0");
     form.show(player).then((response) => {
         var data = dbGet(target);
         if (data == null) {
