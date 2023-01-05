@@ -90,9 +90,6 @@ function addGoods(player, target) {
         .textField("商品名","名前です")
         .textField("アイテムID","hds:?")
         .textField("金額",0);
-    if (player.hasTag('cast')) {
-        form.button("§eキャスト用の画面を開く");
-    }
     form.show(player).then((response) => {
         var data = dbGet(target);
         if (data == null) {
