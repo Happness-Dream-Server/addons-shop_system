@@ -12,7 +12,11 @@ import * as mcui from "@minecraft/server-ui";
 
 //ショップのホーム画面のフォームと、その返答を作成
 function shopHome(player, target) {
-    var data = target.getDynamicProperty("goods");
+    try {
+        var data = target.getDynamicProperty("goods");
+    } catch (error) {
+        var data = null;
+    }
     if (data == null) {
         var form = new mcui.ActionFormData()
             .title("購入できる品物")
@@ -70,7 +74,7 @@ function openCast(player, target) {
 }
 
 function eventGet(event) {
-    shopHome(event.entity,event.hitEntity);
+    shopHome(event.entity, event.hitEntity);
 }
 
 //コマンドとして追加する用だが、実装できるかわからないため、とりあえず放置
