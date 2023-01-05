@@ -64,16 +64,20 @@ function buy(player, target, data) {
 
 //商品の陳列設定
 function openCast(player, target) {
-    //商品のリストを表示し、場合によっては削除したり、追加したりできるようにする
-    //（shopHomeと半分程同じ動作を行う予定のため、一部を別途関数にすることも検討）
     var form = new mcui.ActionFormData()
         .title("販売設定")
         .body("操作を選択してください")
         .button("品物を追加する")
+        .button("品物を削除する")
+        .button("このショップを消す")
         .button("閉じる");
     form.show(player).then((response) => {
         if (response.selection === 0) {
             addGoods(player, target);
+        } else if (response.selection === 1) {
+            removeGoods(player, target);
+        } else if (response.selection === 2) {
+            target.kill();
         }
     });
 }
@@ -100,6 +104,35 @@ function addGoods(player, target) {
         target.addTag(data);
         openCast(player, target);
     });
+}
+
+function removeGoods(player, target) {
+    var data = dbGet(target);
+    if (data = null) {
+        var form = new mcui.ActionFormData()
+            .title("品物を削除")
+            .body("削除できる品物がありません")
+            .button("閉じる");
+        form.show(player).then((response) => {
+        });
+    } else {
+        var form = new mcui.ActionFormData()
+            .title("品物を削除")
+            .body("削除したい品物を選んでください");
+        for (var i = 0; i < data.list.length; i++) {
+            form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
+        }
+        form.button("閉じる");
+        form.show(player).then((response) => {
+            if (response.selection < data.list.length) {
+                target.removeTag(JSON.stringify(data));
+                data.list = data.list.slice(0, (response.selection - 1)).concat(data.list.slice((response.selection + 1), (data.list.length - 1)));
+                data = JSON.stringify(data);
+                target.addTag(data);
+                openCast(player, target);
+            }
+        });
+    }
 }
 
 function dbGet(target) {
