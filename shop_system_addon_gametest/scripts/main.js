@@ -69,8 +69,12 @@ function openCast(player, target) {
     //（shopHomeと半分程同じ動作を行う予定のため、一部を別途関数にすることも検討）
 }
 
+function eventGet(event) {
+    shopHome(event.source,event.block);
+}
+
 //コマンドとして追加する用だが、実装できるかわからないため、とりあえず放置
 var scriptOptions = {
     nameSpaces: "test"
 }
-mc.world.events.scriptEventCommandMessage.subscribe(shopHome);
+mc.world.events.buttonPush.subscribe(eventGet);
