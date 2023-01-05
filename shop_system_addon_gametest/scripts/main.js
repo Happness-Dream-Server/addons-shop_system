@@ -93,7 +93,7 @@ function addGoods(player, target) {
     form.show(player).then((response) => {
         var data = dbGet(target);
         if (data == null) {
-            data = {
+            var data = {
                 type: "food",
                 list: []
             };
