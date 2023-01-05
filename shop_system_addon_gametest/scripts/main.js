@@ -77,7 +77,7 @@ function openCast(player, target) {
         .button("品物を追加する")
         .button("閉じる");
     form.show(player).then((response) => {
-        if (response.selection === 1) {
+        if (response.selection === 0) {
             addGoods(player, target);
         }
     });
