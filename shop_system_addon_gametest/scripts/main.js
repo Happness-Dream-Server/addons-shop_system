@@ -74,10 +74,10 @@ function openCast(player, target) {
 }
 
 function eventGet(event) {
-    shopHome(event.entity, event.hitEntity);
+    if (event.hitEntity.typeId == "hds:shop_object") {
+        shopHome(event.entity, event.hitEntity);
+    }
+    return;
 }
 
-var options = {
-    entityTypes: "hds:shop_object"
-}
-mc.world.events.entityHit.subscribe(eventGet,options);
+mc.world.events.entityHit.subscribe(eventGet);
