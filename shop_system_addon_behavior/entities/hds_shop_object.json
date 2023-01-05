@@ -28,6 +28,15 @@
                 "width": 0.9,
                 "height": 0.9
             },
+            "minecraft:knockback_resistance": {
+              "value": 1.0
+            },
+            "minecraft:pushable": {
+              "is_pushable": false,
+              "is_pushable_by_piston": true
+            },
+            "minecraft:persistent": {
+            },
             "minecraft:physics": {}
         }
     }
