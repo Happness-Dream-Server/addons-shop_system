@@ -70,11 +70,11 @@ function openCast(player, target) {
 }
 
 function eventGet(event) {
-    shopHome(event.source,event.block);
+    shopHome(event.entity,event.hitEntity);
 }
 
 //コマンドとして追加する用だが、実装できるかわからないため、とりあえず放置
 var scriptOptions = {
     nameSpaces: "test"
 }
-mc.world.events.buttonPush.subscribe(eventGet);
+mc.world.events.entityHit.subscribe(eventGet);
