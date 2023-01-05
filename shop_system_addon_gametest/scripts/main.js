@@ -96,11 +96,10 @@ function addGoods(player, target) {
             data = {
                 type: "food",
                 list: []
-            }
+            };
         }
-        var list = data.list;
-        list.push([response.formValues[0], response.formValues[1], response.formValues[2]]);
-        data.list = list;
+        var list = [response.formValues[0], response.formValues[1], response.formValues[2]];
+        data.list.push(list);
         target.setDynamicProperty("goods", JSON.stringify(data));
         openCast(player, target);
     });
