@@ -108,7 +108,7 @@ function addGoods(player, target) {
 
 function removeGoods(player, target) {
     var data = dbGet(target);
-    if (data = null) {
+    if (data == null) {
         var form = new mcui.ActionFormData()
             .title("品物を削除")
             .body("削除できる品物がありません")
