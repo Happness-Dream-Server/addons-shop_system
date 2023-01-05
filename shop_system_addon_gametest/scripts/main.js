@@ -87,9 +87,9 @@ function openCast(player, target) {
 function addGoods(player, target) {
     var form = new mcui.ModalFormData()
         .title("追加内容")
-        .textField("商品名","名前です")
-        .textField("アイテムID","hds:?")
-        .textField("金額","0");
+        .textField("商品名", "名前です")
+        .textField("アイテムID", "hds:?")
+        .textField("金額", "0");
     form.show(player).then((response) => {
         var data = dbGet(target);
         if (data == null) {
@@ -98,8 +98,8 @@ function addGoods(player, target) {
                 list: []
             }
         }
-        data.list.push([response.formValues[0],response.formValues[1],response.formValues[2]]);
-        target.setDynamicProperty(JSON.stringify(data));
+        data.list.push([response.formValues[0], response.formValues[1], response.formValues[2]]);
+        target.setDynamicProperty("goods", JSON.stringify(data));
         openCast(player, target);
     });
 }
