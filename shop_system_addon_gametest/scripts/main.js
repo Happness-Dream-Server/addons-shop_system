@@ -12,11 +12,7 @@ import * as mcui from "@minecraft/server-ui";
 
 //ショップのホーム画面のフォームと、その返答を作成
 function shopHome(player, target) {
-    try {
-        var data = target.getDynamicProperty("goods");
-    } catch (error) {
-        var data = null;
-    }
+    var data = dbGet(target);
     if (data == null) {
         var form = new mcui.ActionFormData()
             .title("購入できる品物")
@@ -31,7 +27,6 @@ function shopHome(player, target) {
             }
         });
     } else {
-        data = JSON.parse(target.getDynamicProperty("goods"));
         var form = new mcui.ActionFormData()
             .title("購入できる品物")
             .body("購入したい品物を選んでください");
