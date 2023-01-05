@@ -41,9 +41,9 @@ function shopHome(player, target) {
         form.show(player).then((response) => {
             if (response.selection < data.list.length) {
                 addCart(player, target, data.list[response.selection]);
-            } else if (response.selection === (data.list.length + 1)) {
+            } else if (response.selection === data.list.length) {
                 checkCart(player, target);
-            } else if (response.selection === (data.list.length + 3)) {
+            } else if (response.selection === (data.list.length + 2)) {
                 openCast(player, target);
             }
         });
@@ -93,6 +93,7 @@ function addGoods(player, target) {
                 list: []
             };
         }
+        target.removeTag(JSON.stringify(data));
         var list = [response.formValues[0], response.formValues[1], response.formValues[2]];
         data.list.push(list);
         data = JSON.stringify(data);
