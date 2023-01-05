@@ -7,18 +7,6 @@
             "is_summonable": true,
             "is_experimental": true
         },
-        "component_groups": {
-            "waiting": {
-                "minecraft:variant": {
-                    "value": 0
-                }
-            },
-            "seeked": {
-                "minecraft:variant": {
-                    "value": 1
-                }
-            }
-        },
         "components": {
             "minecraft:is_stackable": {},
             "minecraft:type_family": {
