@@ -15,6 +15,12 @@
       "render_controllers": [
         "controller.render.default"
       ],
+      "animations" : {
+        "waiting" : "animation.hds_shop_object.waiting"
+      },
+      "scripts": {
+        "animate": "waiting"
+      },
       "textures" : {
         "default" : "textures\/entity\/hds_shop_object"
       }
