@@ -13,6 +13,7 @@ import * as mcui from "@minecraft/server-ui";
 //ショップのホーム画面のフォームと、その返答を作成
 function shopHome(player, target) {
     var data = dbGet(target);
+    //そのショップが対応してる販売アイテムがあるかを確認
     if (data == null) {
         var form = new mcui.ActionFormData()
             .title("購入できる品物")
@@ -33,33 +34,29 @@ function shopHome(player, target) {
         for (var i = 0; i < data.list.length; i++) {
             form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
         }
-        form.button("カートを見る");
         form.button("閉じる");
         if (player.hasTag('cast')) {
             form.button("§eキャスト用の画面を開く");
         }
         form.show(player).then((response) => {
             if (response.selection < data.list.length) {
-                addCart(player, target, data.list[response.selection]);
-            } else if (response.selection === data.list.length) {
-                checkCart(player, target);
-            } else if (response.selection === (data.list.length + 2)) {
+                buy(player, target, data.list[response.selection]);
+            } else if (response.selection === (data.list.length + 1)) {
                 openCast(player, target);
             }
         });
     }
 }
 
-//カートに指定されたアイテムを追加して、終わったらカートを表示させる関数を実行
-function addCart(player, target, data) {
-    //カートに追加するための動作を追加予定
-}
-
-//カートを表示して、購入するかまだ探すかを選べる
-function checkCart(player, target) {
-    //カートを表示、選択によって購入を確定するか、商品選択に戻す
-    //（選択したものを消す手段を作るかどうか迷い中）
-    //購入時、現金かキャッシュレスかを選べるとなおよし
+//指定されたアイテムを購入
+function buy(player, target, data) {
+    //スコアボードに必要な金額があるかを確認
+    var money = Number("0");//ユーザーの所持金
+    if (Number(data[2]) < money) {
+        player.tell("申し訳ございません。所持金が不足しているようです。");
+    } else {
+        //販売用の処理
+    }
 }
 
 //商品の陳列設定
