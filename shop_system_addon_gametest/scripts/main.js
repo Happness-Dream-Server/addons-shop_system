@@ -149,8 +149,10 @@ function dbGet(target) {
 }
 
 function eventGet(event) {
-    if (event.hitEntity.typeId == "hds:shop_object") {
-        shopHome(event.entity, event.hitEntity);
+    if (event.hitEntity == null) { } else {
+        if (event.hitEntity.typeId == "hds:shop_object") {
+            shopHome(event.entity, event.hitEntity);
+        }
     }
     return;
 }
