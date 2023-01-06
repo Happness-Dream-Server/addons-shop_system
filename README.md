@@ -4,7 +4,7 @@ HDSの販売システムに使用する用のアドオンです。
 # <mark>現在、準備中のため、ダウンロードをしても使用できません。</mark>
 # インストール方法
 ゲームテスト、ビヘイビア、リソース全てをそれぞれワールドに適用する必要があります。  
-まず、本リポジトリの**main**ブランチを開いて、<mark>code</mark>のボタンを押し、<mark>Download ZIP</mark>をおします。  
+まず、本リポジトリの**main**ブランチを開いて、**code**のボタンを押し、**Download ZIP**をおします。  
 ダウンロードしたファイルを解凍し、[shop_system_addon_gametest](shop_system_addon_gametest)フォルダと、[shop_system_addon_behavior](shop_system_addon_behavior)フォルダは中身を含めて、Minecraftのbehaviorフォルダに保存し、[shop_system_addon_resource](shop_system_addon_resource)フォルダはMinecraftのresourceフォルダに保存してください。  
 保存が完了したら、Minecraftを起動し、適用したいワールドにbehaviorパックは`ショップ用アドオン`が2つあるはずなので、それを両方適用させ、resourceパックは`ショップ用アドオン`が1つだけあるはずなので、それを適用させてください。
 # ワールド内での使用方法
