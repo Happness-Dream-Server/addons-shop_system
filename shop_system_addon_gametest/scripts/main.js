@@ -3,7 +3,7 @@
 //形式はjson形式
 /*{
     type: string[foods,goods], //商品タイプ
-    list: list = [商品名,アイテムID,金額]//商品情報をさらにlistにしまって保存
+    list: list = [[商品名,アイテムID,金額],…]//商品情報をさらに配列にしまって保存
 }*/
 
 //UIと基本のモジュールをimportする
@@ -12,11 +12,13 @@ import * as mcui from "@minecraft/server-ui";
 
 //ショップのホーム画面のフォームと、その返答を作成
 function shopHome(player, target) {
+    //データを取得する
     var data = dbGet(target);
+    //フォームを変数に保存
     var form = new mcui.ActionFormData()
         .title("購入できる品物");
     //そのショップが対応してる販売アイテムがあるかを確認
-    if (data == null) {
+    if (data == null) {//一度も登録がされていない場合
         form.body("現在、販売している品物はありません")
             .button("閉じる");
         if (player.hasTag('cast')) {
@@ -27,7 +29,7 @@ function shopHome(player, target) {
                 openCast(player, target);
             }
         });
-    } else if (data.list.length == 0) {
+    } else if (data.list.length == 0) {//一度登録されているが、削除された場合
         form.body("現在販売している品物はありません")
             .button("閉じる");
         if (player.hasTag('cast')) {
@@ -38,7 +40,7 @@ function shopHome(player, target) {
                 openCast(player, target);
             }
         });
-    } else {
+    } else {//商品が登録されている場合
         form.body("購入したい品物を選んでください");
         for (var i = 0; i < data.list.length; i++) {
             form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
