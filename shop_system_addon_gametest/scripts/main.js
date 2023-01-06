@@ -2,8 +2,8 @@
 //tagに金額と品物を記入して保存しておく
 //形式はjson形式
 /*{
-    type:販売タイプ(foods or goods)将来的に使用できるように予約,
-    list:販売品データ(name,id,priceの3つの要素)
+    type: string[foods,goods], //商品タイプ
+    list: list = [商品名,アイテムID,金額]//商品情報をさらにlistにしまって保存
 }*/
 
 //UIと基本のモジュールをimportする
