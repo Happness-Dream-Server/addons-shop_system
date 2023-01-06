@@ -27,6 +27,19 @@ function shopHome(player, target) {
                 openCast(player, target);
             }
         });
+    } else if (data.list.length == 0) {
+        var form = new mcui.ActionFormData()
+            .title("購入できる品物")
+            .body("購入できる品物がありません")
+            .button("閉じる");
+        if (player.hasTag('cast')) {
+            form.button("§eキャスト用の画面を開く");
+        }
+        form.show(player).then((response) => {
+            if (response.selection === 1) {
+                openCast(player, target);
+            }
+        });
     } else {
         var form = new mcui.ActionFormData()
             .title("購入できる品物")
@@ -109,6 +122,13 @@ function addGoods(player, target) {
 function removeGoods(player, target) {
     var data = dbGet(target);
     if (data == null) {
+        var form = new mcui.ActionFormData()
+            .title("品物を削除")
+            .body("削除できる品物がありません")
+            .button("閉じる");
+        form.show(player).then((response) => {
+        });
+    } else if (data.list.length == 0) {
         var form = new mcui.ActionFormData()
             .title("品物を削除")
             .body("削除できる品物がありません")
