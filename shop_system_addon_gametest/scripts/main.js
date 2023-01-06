@@ -13,12 +13,12 @@ import * as mcui from "@minecraft/server-ui";
 //ショップのホーム画面のフォームと、その返答を作成
 function shopHome(player, target) {
     var data = dbGet(target);
+    var form = new mcui.ActionFormData()
+        .title("購入できる品物");
     //そのショップが対応してる販売アイテムがあるかを確認
     if (data == null) {
-        var form = new mcui.ActionFormData()
-            .title("購入できる品物")
-            .body("現在、販売している品物はありません！");
-        form.button("閉じる");
+        form.body("現在、販売している品物はありません")
+            .button("閉じる");
         if (player.hasTag('cast')) {
             form.button("§eキャスト用の画面を開く");
         }
@@ -28,9 +28,7 @@ function shopHome(player, target) {
             }
         });
     } else if (data.list.length == 0) {
-        var form = new mcui.ActionFormData()
-            .title("購入できる品物")
-            .body("購入できる品物がありません")
+        form.body("現在販売している品物はありません")
             .button("閉じる");
         if (player.hasTag('cast')) {
             form.button("§eキャスト用の画面を開く");
@@ -41,9 +39,7 @@ function shopHome(player, target) {
             }
         });
     } else {
-        var form = new mcui.ActionFormData()
-            .title("購入できる品物")
-            .body("購入したい品物を選んでください");
+        form.body("購入したい品物を選んでください");
         for (var i = 0; i < data.list.length; i++) {
             form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
         }
@@ -120,25 +116,21 @@ function addGoods(player, target) {
 }
 
 function removeGoods(player, target) {
+    var form = new mcui.ActionFormData()
+        .title("品物を削除");
     var data = dbGet(target);
     if (data == null) {
-        var form = new mcui.ActionFormData()
-            .title("品物を削除")
-            .body("削除できる品物がありません")
+        form.body("削除できる品物がありません")
             .button("閉じる");
         form.show(player).then((response) => {
         });
     } else if (data.list.length == 0) {
-        var form = new mcui.ActionFormData()
-            .title("品物を削除")
-            .body("削除できる品物がありません")
+        form.body("削除できる品物がありません")
             .button("閉じる");
         form.show(player).then((response) => {
         });
     } else {
-        var form = new mcui.ActionFormData()
-            .title("品物を削除")
-            .body("削除したい品物を選んでください");
+        form.body("削除したい品物を選んでください");
         for (var i = 0; i < data.list.length; i++) {
             form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
         }
