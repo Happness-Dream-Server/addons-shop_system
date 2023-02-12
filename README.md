@@ -6,8 +6,8 @@ HDSの販売システムに使用する用のアドオンです。
 ゲームテスト、ビヘイビア、リソース全てをそれぞれワールドに適用する必要があります。  
 まず、本リポジトリの**Releases**を開いて、最新バージョンのものを押して、zipでダウンロードしてください。  
 **Releases**以外のものは開発中などの可能性があり、ダウンロードしてもエラーが発生して使えない可能性があります。新機能追加時は**Releases**を作成します。  
-ダウンロードしたファイルを解凍し、[shop_system_addon_gametest](shop_system_addon_gametest)フォルダと、[shop_system_addon_behavior](shop_system_addon_behavior)フォルダは中身を含めて、Minecraftのbehaviorフォルダに保存し、[shop_system_addon_resource](shop_system_addon_resource)フォルダはMinecraftのresourceフォルダに保存してください。  
-保存が完了したら、Minecraftを起動し、適用したいワールドにbehaviorパックは`ショップ用アドオン`が2つあるはずなので、それを両方適用させ、resourceパックは`ショップ用アドオン`が1つだけあるはずなので、それを適用させてください。
+ダウンロードしたファイルを解凍し、[shop_system_addon_behavior](shop_system_addon_behavior)フォルダは中身を含めて、Minecraftのbehaviorフォルダに保存し、[shop_system_addon_resource](shop_system_addon_resource)フォルダはMinecraftのresourceフォルダに保存してください。  
+保存が完了したら、Minecraftを起動し、適用したいワールドにbehaviorパックとresourceパックのそれぞれ`ショップ用アドオン`が1つだけあるはずなので、それを両方とも適用させてください。
 # ワールド内での使用方法
 使用するために、  
 ```scoreboard objectives add money dummy```  
