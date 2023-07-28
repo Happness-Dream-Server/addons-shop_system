@@ -165,10 +165,10 @@ function dbGet(target) {
 function eventGet(event) {
     if (event.hitEntity == null) { } else {
         if (event.hitEntity.typeId == "hds:shop_object") {
-            shopHome(event.entity, event.hitEntity);
+            shopHome(event.damagingEntity, event.hitEntity);
         }
     }
     return;
 }
 
-mc.world.events.entityHit.subscribe(eventGet);
+mc.world.afterEvents.entityHitEntity.subscribe(eventGet);
