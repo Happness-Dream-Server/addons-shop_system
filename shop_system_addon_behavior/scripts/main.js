@@ -134,7 +134,7 @@ function removeGoods(player, target) {
     } else {
         form.body("削除したい品物を選んでください");
         for (var i = 0; i < data.list.length; i++) {
-            form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
+            form.button(data.list[i][0] + "：" + data.list[i][2] + "ハピドル");
         }
         form.button("閉じる");
         form.show(player).then((response) => {
