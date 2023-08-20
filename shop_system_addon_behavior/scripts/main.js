@@ -43,7 +43,7 @@ function shopHome(player, target) {
     } else {//商品が登録されている場合
         form.body("購入したい品物を選んでください");
         for (var i = 0; i < data.list.length; i++) {
-            form.button(data.list[i][0] + "：" + data.list[i][2] + "オルク");
+            form.button(data.list[i][0] + "：" + data.list[i][2] + "ハピドル");
         }
         form.button("閉じる");
         if (player.hasTag('cast')) {
