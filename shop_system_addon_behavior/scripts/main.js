@@ -62,15 +62,16 @@ function shopHome(player, target) {
 //指定されたアイテムを購入
 function buy(player, target, data) {
     //moneyのスコアボードに必要な金額があるかを確認
-    var money = mc.world.scoreboard.getObjective('money').getScore(player.scoreboard);
+    var money = mc.world.scoreboard.getObjective('money').getScore(player.scoreboardIdentity);
     if (Number(data[2]) <= money) {
         //販売用の処理
-        player.runCommandAsync('scoreboard players remove ' + player.name + ' money ' + Number(data[2]));
-        player.runCommandAsync('give ' + player.name + ' ' + data[1]);
-        player.tell("購入が正常に完了しました。ご購入いただきありがとうございました。");
+        target.runCommandAsync('scoreboard players remove ' + player.name + ' money ' + Number(data[2]));
+        target.runCommandAsync('give ' + player.name + ' ' + data[1]);
+        player.sendMessage("購入が正常に完了しました。ご購入いただきありがとうございました。");
     } else {
-        player.tell("申し訳ございません。所持金が不足しているようです。");
+        player.sendMessage("申し訳ございません。所持金が不足しているようです。");
     }
+    player.sendMessage("現在の所持金：" + money + "ハピドル");
 }
 
 //商品の陳列設定
@@ -107,8 +108,9 @@ function addGoods(player, target) {
                 type: "food",
                 list: []
             };
+        } else {
+            target.removeTag(JSON.stringify(data));
         }
-        target.removeTag(JSON.stringify(data));
         var list = [response.formValues[0], response.formValues[1], response.formValues[2]];
         data.list.push(list);
         data = JSON.stringify(data);
