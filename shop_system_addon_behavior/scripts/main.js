@@ -1,8 +1,8 @@
 //初期設定のメモ
-//tagに金額と品物を記入して保存しておく
+//dynamicPropertiesに金額と品物を記入して保存しておく
 //形式はjson形式
 /*{
-    type: string[foods,goods], //商品タイプ
+    type: string[foods,goods,both],//商品タイプ（セリフを切り替える時用）
     list: list = [[商品名,アイテムID,金額],…]//商品情報をさらに配列にしまって保存
 }*/
 
@@ -18,7 +18,7 @@ function shopHome(player, target) {
     var form = new mcui.ActionFormData()
         .title("購入できる品物");
     //そのショップが対応してる販売アイテムがあるかを確認
-    if (data == null) {//一度も登録がされていない場合
+    if (!data) {//一度も登録がされていない場合
         form.body("現在、販売している品物はありません")
             .button("閉じる");
         if (player.hasTag('cast')) {
@@ -105,16 +105,14 @@ function addGoods(player, target) {
         var data = dbGet(target);
         if (data == null) {
             data = {
-                type: "food",
+                type: "both",
                 list: []
             };
-        } else {
-            target.removeTag(JSON.stringify(data));
         }
         var list = [response.formValues[0], response.formValues[1], response.formValues[2]];
         data.list.push(list);
         data = JSON.stringify(data);
-        target.addTag(data);
+        target.setDynamicProperty(data);
         openCast(player, target);
     });
 }
@@ -153,22 +151,19 @@ function removeGoods(player, target) {
 
 function dbGet(target) {
     try {
-        var data = target.getTags()[0];
+        var data = target.getDynamicProperties();
     } catch (error) {
         var data = null;
     }
-    if (data == null) {
-    } else {
+    if (data) {
         data = JSON.parse(data);
     }
     return data;
 }
 
 function eventGet(event) {
-    if (event.hitEntity == null) { } else {
-        if (event.hitEntity.typeId == "hds:shop_object") {
-            shopHome(event.damagingEntity, event.hitEntity);
-        }
+    if (event.hitEntity && event.hitEntity.typeId == "hds:shop_object") {
+        shopHome(event.damagingEntity, event.hitEntity);
     }
     return;
 }

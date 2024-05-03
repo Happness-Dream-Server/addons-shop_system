@@ -2,7 +2,7 @@
   "format_version": 2,
   "header": {
     "description": "HDSによるショップ用のアドオンです。",
-    "name": "ショップ用アドオン",
+    "name": "hds_shop_addon",
     "uuid": "d4df10c2-cbe6-4e6f-a72b-4dbc3be32dc3",
     "version": [
       0,
@@ -32,7 +32,7 @@
   "dependencies": [
     {
       "module_name": "@minecraft/server",
-      "version": "1.4.0-beta"
+      "version": "1.11.0-beta"
     },
     {
       "module_name": "@minecraft/server-ui",
