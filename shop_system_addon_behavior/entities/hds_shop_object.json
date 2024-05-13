@@ -1,0 +1,37 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "hds:shop_object",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": true
+        },
+        "components": {
+            "minecraft:is_stackable": {},
+            "minecraft:type_family": {
+                "family": ["props", "inanimate"]
+            },
+            "minecraft:collision_box": {
+                "width": 0.9,
+                "height": 0.9
+            },
+            "minecraft:knockback_resistance": {
+              "value": 1.0
+            },
+            "minecraft:pushable": {
+              "is_pushable": false,
+              "is_pushable_by_piston": true
+            },
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "cause": "all",
+                    "deals_damage": false
+                }
+            },
+            "minecraft:persistent": {
+            },
+            "minecraft:physics": {}
+        }
+    }
+}

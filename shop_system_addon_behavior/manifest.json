@@ -1,0 +1,42 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "HDSによるショップ用のアドオンです。",
+    "name": "hds_shop_addon",
+    "uuid": "d4df10c2-cbe6-4e6f-a72b-4dbc3be32dc3",
+    "version": [
+      0,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      18,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "description": "HDSによるショップ用のアドオンです。",
+      "type": "script",
+      "language": "javascript",
+      "uuid": "54295633-4243-4853-b1b4-3eb9e5bb696d",
+      "version": [
+        0,
+        0,
+        0
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.11.0-beta"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "1.2.0-beta"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "minecraft:client_entity" : {
+    "description" : {
+      "identifier" : "hds:shop_object",
+      "materials" : {
+        "default" : "entity_alphablend"
+      },
+      "geometry" : {
+        "default" : "geometry.hds_shop_object"
+      },
+      "spawn_egg" : {
+        "texture" : "hds:shop_object",
+        "texture_index" : 0
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "animations" : {
+        "waiting" : "animation.hds_shop_object.waiting"
+      },
+      "scripts": {
+        "animate": [
+          "waiting"
+        ]
+      },
+      "textures" : {
+        "default" : "textures\/entity\/hds_shop_object"
+      }
+    }
+  },
+  "format_version" : "1.10.0"
+}
