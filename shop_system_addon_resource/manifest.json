@@ -2,7 +2,7 @@
     "format_version": 2,
     "header": {
         "description": "HDSによるショップ用のアドオンです。",
-        "name": "ショップ用アドオン",
+        "name": "hds_shop_addon",
         "uuid": "c21b833c-b445-47d6-b1f0-19fcb6b99c23",
         "version": [
             0,
