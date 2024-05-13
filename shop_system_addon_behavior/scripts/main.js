@@ -102,18 +102,22 @@ function addGoods(player, target) {
         .textField("アイテムID", "hds:?")
         .textField("金額", "0");
     form.show(player).then((response) => {
-        var data = dbGet(target);
-        if (data == null) {
-            data = {
-                type: "both",
-                list: []
-            };
+        if (response.formValues[0] && response.formValues[1] && response.formValues[2]) {
+            var data = dbGet(target);
+            if (data == null) {
+                data = {
+                    type: "both",
+                    list: []
+                };
+            }
+            var list = [response.formValues[0], response.formValues[1], response.formValues[2]];
+            data.list.push(list);
+            data = JSON.stringify(data);
+            target.setDynamicProperty('hds_shop_data', data);
+            openCast(player, target);
+        } else {
+            player.sendMessage('未記入の項目があり、追加できませんでした。');
         }
-        var list = [response.formValues[0], response.formValues[1], response.formValues[2]];
-        data.list.push(list);
-        data = JSON.stringify(data);
-        target.setDynamicProperty(data);
-        openCast(player, target);
     });
 }
 
@@ -142,7 +146,7 @@ function removeGoods(player, target) {
                 target.removeTag(JSON.stringify(data));
                 data.list = data.list.slice(0, (response.selection - 1)).concat(data.list.slice((response.selection + 1), (data.list.length - 1)));
                 data = JSON.stringify(data);
-                target.addTag(data);
+                target.setDynamicProperty('hds_shop_data', data);
                 openCast(player, target);
             }
         });
@@ -151,7 +155,7 @@ function removeGoods(player, target) {
 
 function dbGet(target) {
     try {
-        var data = target.getDynamicProperties();
+        var data = target.getDynamicProperty('hds_shop_data');
     } catch (error) {
         var data = null;
     }
