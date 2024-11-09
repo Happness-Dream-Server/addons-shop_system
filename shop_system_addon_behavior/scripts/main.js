@@ -166,10 +166,10 @@ function dbGet(target) {
 }
 
 function eventGet(event) {
-    if (event.hitEntity && event.hitEntity.typeId == "hds:shop_object") {
-        shopHome(event.damagingEntity, event.hitEntity);
+    if (event.target && event.target.typeId == "hds:shop_object") {
+        shopHome(event.player, event.target);
     }
     return;
 }
 
-mc.world.afterEvents.entityHitEntity.subscribe(eventGet);
+mc.world.afterEvents.playerInteractWithEntity.subscribe(eventGet);

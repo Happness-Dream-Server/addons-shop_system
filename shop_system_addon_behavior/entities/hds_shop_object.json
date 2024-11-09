@@ -31,7 +31,15 @@
             },
             "minecraft:persistent": {
             },
-            "minecraft:physics": {}
+            "minecraft:physics": {},
+            "minecraft:interact": {
+                "interactions": [{
+                    "on_interact": {
+                    },
+                    "interact_text": "éã",
+                    "swing": true
+                }]
+            }
         }
     }
 }
